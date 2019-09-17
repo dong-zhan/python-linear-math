@@ -2,9 +2,9 @@ import math
 import random
 
 class vector2 :          
-    def __init__(self):
-        self.x = 0
-        self.y = 0
+    def __init__(self, x = 0, y = 0):
+        self.x = x
+        self.y = y
 
     def set(self, x, y) :
         self.x = x
@@ -25,14 +25,16 @@ class vector2 :
         return self
 
     def __add__(self, other):
-        self.x += other.x
-        self.y += other.y
-        return self
+        v = vector2()
+        v.x = other.x + self.x
+        v.y = other.y + self.y
+        return v
     
     def __sub__(self, other):
-        self.x -= other.x
-        self.y -= other.y
-        return self
+        v = vector2()
+        v.x = self.x - other.x
+        v.y = self.y - other.y
+        return v
     
     def __isub__(self, other):  #-=
         self.x -= other.x
@@ -104,10 +106,10 @@ class vector2 :
 
         
 class vector3 :          
-    def __init__(self):
-        self.x = 0
-        self.y = 0
-        self.z = 0
+    def __init__(self, x = 0, y = 0, z = 0):
+        self.x = x
+        self.y = y
+        self.z = z
 
     def set(self, x, y, z) :
         self.x = x
@@ -126,7 +128,7 @@ class vector3 :
         return math.sqrt(self.lengthSquared())
         
     def __mul__(self, other):
-        return m.mulVector3(self)
+        return other.mulVector3(self)
     
     def __truediv__(self, other): 
         self.x /= other
@@ -135,16 +137,18 @@ class vector3 :
         return self
     
     def __add__(self, other):
-        self.x += other.x
-        self.y += other.y
-        self.z += other.z
-        return self
+        v = vector3()
+        v.x = self.x + other.x
+        v.y = self.y + other.y
+        v.z = self.z + other.z
+        return v
     
     def __sub__(self, other):
-        self.x -= other.x
-        self.y -= other.y
-        self.z -= other.z
-        return self
+        v = vector3()
+        v.x = self.x - other.x
+        v.y = self.y - other.y
+        v.z = self.z - other.z
+        return v
     
     def __isub__(self, other):  #-=
         self.x -= other.x
